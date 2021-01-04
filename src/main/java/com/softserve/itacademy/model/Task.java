@@ -4,7 +4,7 @@ public class Task {
     private int id;
     private String title;
     private Priority priority;
-
+//NOP
     private static int counter = 1;
 
     public Task() {
