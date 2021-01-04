@@ -26,6 +26,5 @@ public class TestServlet extends HttpServlet {
         request.setAttribute("task", task);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/test-page.jsp");
         requestDispatcher.forward(request, response);
-
     }
 }
