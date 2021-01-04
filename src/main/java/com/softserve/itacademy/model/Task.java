@@ -34,7 +34,6 @@ public class Task {
     }
 
 
-
     public void setPriority(Priority priority) {
         this.priority = priority;
     }
