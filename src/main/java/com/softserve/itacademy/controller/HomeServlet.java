@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value = "/home")
+@WebServlet({"/", "/home"})
 public class HomeServlet extends HttpServlet{
 
     private TaskRepository taskRepository;
