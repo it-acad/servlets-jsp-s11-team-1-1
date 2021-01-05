@@ -62,6 +62,7 @@
     <header>
         <a href="home">Home</a><hr><a href="create-task">Add new Task</a><hr><a href="tasks-list">Show all Tasks</a>
     </header>
+
     <h1>Create new Task</h1>
     <form action="/create-task" method="post">
         <div class="creation-div">

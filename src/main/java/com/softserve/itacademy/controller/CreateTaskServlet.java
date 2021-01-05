@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet(value = "/create-task" )
 public class CreateTaskServlet  extends HttpServlet {
@@ -29,8 +30,15 @@ public class CreateTaskServlet  extends HttpServlet {
         String taskName = request.getParameter("taskname");
         Priority priority = Priority.valueOf(request.getParameter("priority"));
         Task task = new Task(taskName, priority);
-        taskRepository.create(task);
-        response.sendRedirect("/tasks-list");
+        if (taskRepository.create(task)){
+
+            response.sendRedirect("/tasks-list");
+        }
+        else {
+
+            response.sendRedirect("/create-task");
+
+        }
     }
 
 }
