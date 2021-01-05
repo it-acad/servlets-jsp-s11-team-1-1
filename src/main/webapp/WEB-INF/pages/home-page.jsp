@@ -38,7 +38,7 @@
 </head>
 <body>
     <div>
-        <a href="home">Home</a><hr><a href="create-task">Add new Task</a><hr><a href="tasks-list">Show all Tasks</a>
+        <a href="/home">Home</a><hr><a href="/create-task">Add new Task</a><hr><a href="/tasks-list">Show all Tasks</a>
     </div>
     <p>Welcome to awesome To-Do List!!!</p>
 
