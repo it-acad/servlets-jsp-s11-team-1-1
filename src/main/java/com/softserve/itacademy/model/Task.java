@@ -16,6 +16,9 @@ public class Task {
         this.priority = priority;
         id = counter++;
     }
+    public static void deleteInstance(){
+        counter--;
+    }
 
     public int getId() {
         return id;
