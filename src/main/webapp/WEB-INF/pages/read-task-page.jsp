@@ -46,11 +46,20 @@
 <header>
     <a href="home">Home</a><hr><a href="create-task">Add new Task</a><hr><a href="tasks-list">Show all Tasks</a>
 </header>
+<% Task task = (Task) request.getAttribute("task");
+    if(task == null){
+        response.setStatus(404);
+%>
+<h1>Task with ID '<%=request.getParameter("id")%>' not found in To-Do List!</h1>
+<br>
+<h2> url: <%=request.getAttribute("requestURI")%></h2>
 <%
-    Task task = (Task) request.getAttribute("task");
+}
+else{
 %>
     <p>No. : <%=task.getId()%></p>
     <p>Title : <%=task.getTitle()%></p>
     <p>Priority : <%=task.getPriority()%></p>
+<%}%>
 </body>
 </html>
