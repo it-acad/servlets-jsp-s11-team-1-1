@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "/tasks-list")
+@WebServlet(value = "/tasks-list")
 public class TaskListServlet extends HttpServlet {
     private TaskRepository taskRepository;
 
@@ -20,7 +20,7 @@ public class TaskListServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("webapp/tasks-list-page.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/tasks-list-page.jsp");
         request.setAttribute("tasks",taskRepository.all());
         requestDispatcher.forward(request,response);
     }

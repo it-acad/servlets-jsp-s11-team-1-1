@@ -1,5 +1,6 @@
 package com.softserve.itacademy.controller;
 
+import com.softserve.itacademy.model.Priority;
 import com.softserve.itacademy.model.Task;
 import com.softserve.itacademy.repository.TaskRepository;
 
@@ -11,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet({"/home", "/"})
-public class HomeServlet extends HttpServlet{
+@WebServlet(value = "/create-task" )
+public class CreateTaskServlet  extends HttpServlet {
 
     private TaskRepository taskRepository;
 
@@ -22,8 +23,14 @@ public class HomeServlet extends HttpServlet{
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        Task task = taskRepository.read(1);
-//        request.setAttribute("task", task);
-        request.getRequestDispatcher("/WEB-INF/pages/home-page.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/create-task-page.jsp").forward(request, response);
     }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String taskName = request.getParameter("taskname");
+        Priority priority = Priority.valueOf(request.getParameter("priority"));
+        Task task = new Task(taskName, priority);
+        taskRepository.create(task);
+        response.sendRedirect("/tasks-list");
+    }
+
 }
