@@ -1,6 +1,5 @@
 package com.softserve.itacademy.controller;
 
-import com.softserve.itacademy.model.Task;
 import com.softserve.itacademy.repository.TaskRepository;
 
 import javax.servlet.RequestDispatcher;
@@ -11,20 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value = "/" )
-public class MainServlet extends HttpServlet {
-
+@WebServlet(name = "/tasks-list")
+public class TaskListServlet extends HttpServlet {
     private TaskRepository taskRepository;
 
     @Override
-    public void init() {
+    public void init() throws ServletException {
         taskRepository = TaskRepository.getTaskRepository();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Task task = taskRepository.read(1);
-        request.setAttribute("task", task);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/home-page.jsp");
-        requestDispatcher.forward(request, response);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("webapp/tasks-list-page.jsp");
+        request.setAttribute("tasks",taskRepository.all());
+        requestDispatcher.forward(request,response);
     }
 }
