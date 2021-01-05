@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value = "/home")
+@WebServlet({"/home", "/"})
 public class HomeServlet extends HttpServlet{
 
     private TaskRepository taskRepository;
@@ -24,7 +24,6 @@ public class HomeServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Task task = taskRepository.read(1);
         request.setAttribute("task", task);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/home-page.jsp");
-        requestDispatcher.forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/home-page.jsp").forward(request, response);
     }
 }

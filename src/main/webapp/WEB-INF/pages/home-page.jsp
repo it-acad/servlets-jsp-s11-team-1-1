@@ -13,33 +13,33 @@
             text-align: center;
             font-family: "Roboto";
         }
-        div{
+        header{
             height: 6%;
             display: flex;
             flex-direction: row;
             text-align: center;
         }
-        p{
-            font-size: 40px;
-            font-weight: 700;
-        }
-        a{
+        header>a{
             font-size: 20px;
             margin: 8px;
             outline: none;
             text-decoration: none;
             color: black;
         }
-        hr{
+        header>hr{
             color: black;
             margin: 5px;
+        }
+        p{
+            font-size: 40px;
+            font-weight: 700;
         }
     </style>
 </head>
 <body>
-    <div>
-        <a href="home">Home</a><hr><a href="create-task">Add new Task</a><hr><a href="tasks-list">Show all Tasks</a>
-    </div>
+<header>
+    <a href="home">Home</a><hr><a href="create-task">Add new Task</a><hr><a href="tasks-list">Show all Tasks</a>
+</header>
     <p>Welcome to awesome To-Do List!!!</p>
 
 </body>
