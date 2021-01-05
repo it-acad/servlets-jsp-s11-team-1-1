@@ -33,6 +33,9 @@
             font-size: 40px;
             font-weight: 700;
         }
+        p{
+            margin-left: 1%;
+        }
         .creation-div{
             display: flex;
             flex-direction: column;
@@ -64,7 +67,7 @@
 
     <h1>Create new Task</h1>
     <% if (request.getAttribute("message") != null) { %>
-    <h1><%= request.getAttribute("message") %></h1>
+    <p><%= request.getAttribute("message") %></p>
     <% } %>
     <form action="/create-task" method="post">
         <div class="creation-div">
