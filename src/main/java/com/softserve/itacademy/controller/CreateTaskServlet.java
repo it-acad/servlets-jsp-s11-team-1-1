@@ -26,7 +26,7 @@ public class CreateTaskServlet  extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/pages/create-task-page.jsp").forward(request, response);
     }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String taskName = request.getParameter("taskname");
         Priority priority = Priority.valueOf(request.getParameter("priority"));
         Task task = new Task(taskName, priority);
@@ -35,8 +35,8 @@ public class CreateTaskServlet  extends HttpServlet {
         }
         else {
             Task.deleteInstance();
-            request.setAttribute("message", "This task already exists.");
-            response.sendRedirect("/create-task");
+            request.setAttribute("message", "Task with given name already exists!");
+            request.getRequestDispatcher("/WEB-INF/pages/create-task-page.jsp").forward(request, response);
         }
     }
 
