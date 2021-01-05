@@ -34,6 +34,7 @@ public class CreateTaskServlet  extends HttpServlet {
             response.sendRedirect("/tasks-list");
         }
         else {
+            Task.deleteInstance();
             request.setAttribute("message", "This task already exists.");
             response.sendRedirect("/create-task");
         }
