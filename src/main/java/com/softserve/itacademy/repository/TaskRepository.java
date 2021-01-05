@@ -11,7 +11,6 @@ public class TaskRepository {
 
     private TaskRepository() {
         todo = new LinkedList<>();
-        todo.add(new Task("Test Task", Priority.LOW));
     }
 
     public boolean create(Task task) {

@@ -16,18 +16,17 @@ public class Task {
         this.priority = priority;
         id = counter++;
     }
-
-    public int getId() {
-        return id;
+    public static void deleteInstance(){
+        counter--;
     }
+
+    public int getId() { return id;}
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public void setTitle(String title) { this.title = title; }
 
     public Priority getPriority() {
         return priority;

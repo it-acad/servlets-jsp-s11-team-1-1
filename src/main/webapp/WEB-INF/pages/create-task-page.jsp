@@ -17,7 +17,6 @@
             height: 6%;
             display: flex;
             flex-direction: row;
-
         }
         header>a{
             font-size: 20px;
@@ -33,6 +32,9 @@
         h1{
             font-size: 40px;
             font-weight: 700;
+        }
+        p{
+            margin-left: 1%;
         }
         .creation-div{
             display: flex;
@@ -62,7 +64,11 @@
     <header>
         <a href="home">Home</a><hr><a href="create-task">Add new Task</a><hr><a href="tasks-list">Show all Tasks</a>
     </header>
+
     <h1>Create new Task</h1>
+    <% if (request.getAttribute("message") != null) { %>
+    <p><%= request.getAttribute("message") %></p>
+    <% } %>
     <form action="/create-task" method="post">
         <div class="creation-div">
             <div>
@@ -78,9 +84,7 @@
             </div>
             <div>
                 <input type="submit" id="create-btn" value="Create">
-                <input type="submit" id="clear-btn" value="Clear">
-                <%--        <button type="submit" id="create-btn">Create</button>--%>
-                <%--        <button type="reset" id="clear-btn">Clear</button>--%>
+                <input type="reset" id="clear-btn" value="Clear">
             </div>
         </div>
     </form>
