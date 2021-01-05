@@ -4,34 +4,39 @@ import com.softserve.itacademy.model.Priority;
 import com.softserve.itacademy.model.Task;
 import com.softserve.itacademy.repository.TaskRepository;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(value = "/edit-task")
+@WebServlet("/edit-task")
 public class UpdateTaskServlet extends HttpServlet {
-
-    private Task task;
     private TaskRepository taskRepository;
+    private Task task;
 
     @Override
-    public void init() throws ServletException {
+    public void init() {
         taskRepository = TaskRepository.getTaskRepository();
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         task = taskRepository.read(Integer.parseInt(request.getParameter("id")));
-        request.setAttribute("task",task);
-        request.getRequestDispatcher("/WEB-INF/pages/update-task-page.jsp").forward(request,response);
+        request.setAttribute("task", task);
+        request.setAttribute("isValidTask", task != null);
+        request.setAttribute("requestURI", request.getRequestURI());
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/pages/update-task-page.jsp");
+        requestDispatcher.forward(request, response);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         task.setTitle(request.getParameter("taskname"));
         task.setPriority(Priority.valueOf(request.getParameter("priority")));
-        taskRepository.update(task);
-        response.sendRedirect("/tasks-list");
+        if(taskRepository.update(task)){
+            response.sendRedirect("/tasks-list");
+        } else {
+            //response.sendStatus(500, "Task not updated!");
+        }
     }
 }
