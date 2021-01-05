@@ -17,7 +17,6 @@
             height: 6%;
             display: flex;
             flex-direction: row;
-
         }
         header>a{
             font-size: 20px;
@@ -64,6 +63,9 @@
     </header>
 
     <h1>Create new Task</h1>
+    <% if (request.getAttribute("message") != null) { %>
+    <h1><%= request.getAttribute("message") %></h1>
+    <% } %>
     <form action="/create-task" method="post">
         <div class="creation-div">
             <div>
@@ -79,9 +81,7 @@
             </div>
             <div>
                 <input type="submit" id="create-btn" value="Create">
-                <input type="submit" id="clear-btn" value="Clear">
-                <%--        <button type="submit" id="create-btn">Create</button>--%>
-                <%--        <button type="reset" id="clear-btn">Clear</button>--%>
+                <input type="reset" id="clear-btn" value="Clear">
             </div>
         </div>
     </form>
