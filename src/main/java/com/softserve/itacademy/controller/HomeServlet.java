@@ -22,8 +22,8 @@ public class HomeServlet extends HttpServlet{
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Task task = taskRepository.read(1);
-        request.setAttribute("task", task);
+//        Task task = taskRepository.read(1);
+//        request.setAttribute("task", task);
         request.getRequestDispatcher("/WEB-INF/pages/home-page.jsp").forward(request, response);
     }
 }

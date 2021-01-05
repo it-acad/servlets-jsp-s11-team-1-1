@@ -30,7 +30,7 @@ public class CreateTaskServlet  extends HttpServlet {
         Priority priority = Priority.valueOf(request.getParameter("priority"));
         Task task = new Task(taskName, priority);
         taskRepository.create(task);
-        response.sendRedirect("/tasks-list/");
+        response.sendRedirect("/tasks-list");
     }
 
 }
