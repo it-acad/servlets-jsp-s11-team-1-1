@@ -4,14 +4,14 @@ import com.softserve.itacademy.model.Priority;
 import com.softserve.itacademy.model.Task;
 import com.softserve.itacademy.repository.TaskRepository;
 
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
+
 
 @WebServlet(value = "/create-task" )
 public class CreateTaskServlet  extends HttpServlet {
@@ -31,13 +31,11 @@ public class CreateTaskServlet  extends HttpServlet {
         Priority priority = Priority.valueOf(request.getParameter("priority"));
         Task task = new Task(taskName, priority);
         if (taskRepository.create(task)){
-
             response.sendRedirect("/tasks-list");
         }
         else {
-
+            request.setAttribute("message", "This task already exists.");
             response.sendRedirect("/create-task");
-
         }
     }
 
