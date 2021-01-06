@@ -33,10 +33,7 @@ public class UpdateTaskServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         task.setTitle(request.getParameter("taskname"));
         task.setPriority(Priority.valueOf(request.getParameter("priority")));
-        if(taskRepository.update(task)){
-            response.sendRedirect("/tasks-list");
-        } else {
-            //response.sendStatus(500, "Task not updated!");
-        }
+        taskRepository.update(task);
+        response.sendRedirect("/tasks-list");
     }
 }
