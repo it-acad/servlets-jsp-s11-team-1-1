@@ -10,14 +10,13 @@
             display: flex;
             flex-direction: column;
             padding: 1%;
-            text-align: center;
+            text-align: left;
             font-family: "Roboto";
         }
         header{
             height: 6%;
             display: flex;
             flex-direction: row;
-            text-align: center;
         }
         header>a{
             font-size: 20px;
@@ -30,9 +29,15 @@
             color: black;
             margin: 5px;
         }
-        p{
+        h1{
             font-size: 40px;
             font-weight: 700;
+        }
+        p{
+            margin-left: 1%;
+        }
+        #create-btn, #clear-btn{
+            margin: 1% 0 0 1%;
         }
     </style>
     <%Boolean isValidTask = (Boolean) request.getAttribute("isValidTask");
@@ -83,8 +88,8 @@
             </td>
         </tr>
         <tr>
-            <td><input type="submit" value="Update"></td>
-            <td><input type="reset" value="Clear"></td>
+            <td><input type="submit" value="Update" id="create-btn"></td>
+            <td><input type="reset" value="Clear" id="clear-btn"></td>
         </tr>
     </table>
     <%

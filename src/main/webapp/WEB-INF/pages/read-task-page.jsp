@@ -1,10 +1,4 @@
-<%@ page import="com.softserve.itacademy.model.Task" %><%--
-  Created by IntelliJ IDEA.
-  User: nazarko
-  Date: 1/5/21
-  Time: 4:52 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.softserve.itacademy.model.Task" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,14 +9,13 @@
             display: flex;
             flex-direction: column;
             padding: 1%;
-            text-align: center;
+            text-align: left;
             font-family: "Roboto";
         }
         header{
             height: 6%;
             display: flex;
             flex-direction: row;
-            text-align: center;
         }
         header>a{
             font-size: 20px;
@@ -35,17 +28,21 @@
             color: black;
             margin: 5px;
         }
-        p{
+        h1{
             font-size: 40px;
             font-weight: 700;
         }
+        p{
+            margin-left: 1%;
+        }
     </style>
-    <title>Info about task</title>
+    <title>Read existing task</title>
 </head>
 <body>
-<header>
-    <a href="home">Home</a><hr><a href="create-task">Add new Task</a><hr><a href="tasks-list">Show all Tasks</a>
-</header>
+    <header>
+        <a href="home">Home</a><hr><a href="create-task">Add new Task</a><hr><a href="tasks-list">Show all Tasks</a>
+    </header>
+    <h1>Read existing task</h1>
 <%
     Task task = (Task) request.getAttribute("task");
 %>
